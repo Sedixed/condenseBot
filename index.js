@@ -1,7 +1,7 @@
-const { Client, GatewayIntentBits, Collection, GuildMember } = require("discord.js");
-const config = require("./config.json");
+import { Client, GatewayIntentBits, Collection, GuildMember } from "discord.js";
+import { BOT_TOKEN } from "./config.json";
 
-const { get, patch } = require('./api/discord.js')
+import { get, patch } from './api/discord.js';
 
 
 
@@ -23,4 +23,4 @@ client.on("ready", async () => {
   console.log(`Initializing bot at ${startingDate.toLocaleTimeString('fr-FR')}`)
 })
 
-client.login(config.BOT_TOKEN);
+client.login(BOT_TOKEN);

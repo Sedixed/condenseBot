@@ -1,4 +1,4 @@
-const config = require("../config.json");
+import { BOT_TOKEN } from "../config.json";
 
 /**
  * API host name.
@@ -9,7 +9,7 @@ const HOSTNAME = 'https://discord.com/api';
  * Headers of the requests.
  */
 const HEADERS = new Headers();
-HEADERS.append('Authorization', 'Bot ' + config.BOT_TOKEN);
+HEADERS.append('Authorization', 'Bot ' + BOT_TOKEN);
 HEADERS.append('Content-Type', 'application/json');
 
 /**
@@ -48,7 +48,7 @@ async function patch(route, body) {
   return responseData;
 }
 
-module.exports = {
+export default {
   get, 
   patch
 }
