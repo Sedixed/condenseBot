@@ -1,0 +1,15 @@
+{
+  "name": "condensebot",
+  "version": "1.0.0",
+  "description": "CondenseBot for people that talk too much",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sedixed",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.16.2"
+  },
+  "keywords": []
+}
