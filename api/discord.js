@@ -1,16 +1,16 @@
-import { BOT_TOKEN } from "../config.json";
+import { BOT_TOKEN } from '../config.json'
 
 /**
  * API host name.
  */
-const HOSTNAME = 'https://discord.com/api';
+const HOSTNAME = 'https://discord.com/api'
 
 /**
  * Headers of the requests.
  */
-const HEADERS = new Headers();
-HEADERS.append('Authorization', 'Bot ' + BOT_TOKEN);
-HEADERS.append('Content-Type', 'application/json');
+const HEADERS = new Headers()
+HEADERS.append('Authorization', `Bot ${BOT_TOKEN}`)
+HEADERS.append('Content-Type', 'application/json')
 
 /**
  * Sends a GET request at the given route of the HOSTNAME and returns the response.
@@ -18,8 +18,9 @@ HEADERS.append('Content-Type', 'application/json');
  * @returns The request response.
  */
 async function get(route) {
-  let responseData = '';
-  await fetch(HOSTNAME + route, 
+  let responseData = ''
+  await fetch(
+    HOSTNAME + route, 
     {
       method: 'GET',
       headers: HEADERS,
@@ -29,14 +30,14 @@ async function get(route) {
   ).then(
     response => response.json()
   ).then(data => {
-      responseData = data;
-  }
-  );
+    responseData = data;
+  })
   return responseData;
 }
 
 async function patch(route, body) {
-  let responseData = await fetch(HOSTNAME + route, 
+  let responseData = await fetch(
+    HOSTNAME + route, 
     {
       method: 'PATCH',
       headers: HEADERS,
@@ -45,7 +46,7 @@ async function patch(route, body) {
       body: JSON.stringify(body)
     }
   )
-  return responseData;
+  return responseData
 }
 
 export default {
