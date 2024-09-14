@@ -13,17 +13,15 @@ const client = new Client({
   ]
 })
 
-const restrictedUsername = config.RESTRICTED_USERNAME
+const restrictedUsernames = config.RESTRICTED_USERNAMES
 
 client.on(Events.MessageCreate, async (message) => {
   // Disable reading if message author is a bot
   if (message.author.bot) return
 
-  if (message.author.username === restrictedUsername) {
-    const channelId = message.channelId
-
-    const last5ChannelMessages = (await get(`/channels/${channelId}/messages?limit=5`))
-    if (last5ChannelMessages.every(message => message.author.username === restrictedUsername)) {
+  if (restrictedUsernames.includes(message.author.username)) {
+    const last5ChannelMessages = await get(`/channels/${message.channelId}/messages?limit=5`)
+    if (last5ChannelMessages.every(lastMessage => lastMessage.author.username === message.author.username)) {
       const messageDate = new Date(
         new Date(message.createdTimestamp).toLocaleString(
           'en-US', 
